@@ -9,7 +9,7 @@ A apresentação será dividida em 4 blocos principais, que podem ser distribuí
   * **Bloco 1: Introdução e Conceitos Fundamentais** (Apresentador 1)
   * **Bloco 2: Mecanismos Internos do Kernel** (Apresentador 2)
   * **Bloco 3: Demonstrações Práticas** (Apresentador 3 - o mais "hands-on" do grupo)
-  * **Bloco 4: Situações Extremas e Conclusão** (Pode ser o Apresentador 1 ou 2)
+  * **Bloco 4: Situações Extremas e Conclusão** (Apresentador 3)
 
 -----
 
