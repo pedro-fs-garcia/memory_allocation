@@ -22,7 +22,7 @@ int main() {
         }
         // "Suja" a memória para forçar a alocação física
         memset(p, 0, 100 * MEGABYTE);
-        printf(".");
+        printf(".\n");
         fflush(stdout); // Garante que o ponto seja impresso imediatamente
     }
 

@@ -11,11 +11,10 @@ int main() {
     void *p;
 
     while (1) {
-        // Tenta alocar 1 MB de memória
         p = malloc(MEGABYTE);
         if (p == NULL) {
             printf("Falha ao alocar memória! O sistema pode estar no limite.\n");
-            // Continua dormindo para podermos observar o estado final
+
             sleep(10);
             return 1;
         }
@@ -26,7 +25,7 @@ int main() {
         memset(p, 0, MEGABYTE);
         
         count++;
-        printf("Total alocado: %d MB\n", count);
+        printf("Total alocado para o processo %d: %d MB\n", getpid(), count);
 
         // Espera 100 milissegundos (0.1 segundos)
         usleep(100000);
