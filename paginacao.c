@@ -34,7 +34,6 @@ void print_memory_info(pid_t pid, const char* label, const void* target_addr) {
         return;
     }
 
-    // Converte o endereco de memoria para uma string para busca
     char addr_str[32];
     snprintf(addr_str, sizeof(addr_str), "%lx", (unsigned long)target_addr);
 
@@ -44,7 +43,6 @@ void print_memory_info(pid_t pid, const char* label, const void* target_addr) {
     printf(COLOR_BOLD "%s:\n" COLOR_RESET, label);
 
     while (fgets(line, sizeof(line), fp)) {
-        // MODIFICADO: Procura pela linha que contem o endereco exato do nosso mapeamento
         if (!found_mapping && strstr(line, addr_str) != NULL) {
             found_mapping = 1;
         }
@@ -56,7 +54,6 @@ void print_memory_info(pid_t pid, const char* label, const void* target_addr) {
             }
             if (sscanf(line, "Rss: %lu kB", &value_kb) == 1) {
                 printf("  - Memoria Fisica (Rss):  " COLOR_GREEN "%lu KiB\n" COLOR_RESET, value_kb);
-                // Uma vez que encontramos o Rss, ja temos toda a info deste bloco
                 break; 
             }
         }
@@ -71,10 +68,9 @@ void print_memory_info(pid_t pid, const char* label, const void* target_addr) {
  */
 void wait_for_enter() {
     printf(COLOR_CYAN "\n[Pressione ENTER para continuar...]" COLOR_RESET);
-    // Limpa o buffer de entrada antes de esperar pelo proximo caracter
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
-    if (c == '\n') { // Se o ultimo getchar nao foi o \n, le de novo
+    if (c == '\n') {
         getchar();
     }
 }
@@ -124,7 +120,7 @@ int main() {
 
     printf("\n\n" COLOR_BOLD "--- Fase de Verificacao ---\n" COLOR_RESET);
     printf("Lendo os dados de cada pagina para provar que a memoria persiste.\n");
-    getchar(); // Espera um ENTER final
+    getchar();
 
     int errors = 0;
     for (int i = 0; i < NUM_PAGES; i++) {
